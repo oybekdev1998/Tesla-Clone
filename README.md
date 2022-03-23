@@ -1,4 +1,4 @@
-#deploy: https://tesla-clone-green-zeta.vercel.app/
+#Deploy: https://tesla-clone-green-zeta.vercel.app/
 
 #Stack: 
 
