@@ -4,38 +4,50 @@ import styled from 'styled-components'
 import  MenuIcon  from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 
+import { selectCars} from '../features/car/carSlice';
+import { useSelector } from 'react-redux';
+
 const Header = () => {
   const [burgerStatus, setBurgerStatus] = useState(false)
+  const cars = useSelector(selectCars)
 
   return (
     <Container>
-      
       <Logo>
-        <a href='2#'>
+        <a href="2#">
           <img src="/images/logo.svg" alt="Logo" />
         </a>
       </Logo>
       <Menu>
-        <a href="2#">Model 3</a>
-        <a href="2#">Model Y</a>
-        <a href="2#">Model S</a>
-        <a href="2#">Model X</a>
+        {cars &&
+          cars.map((car, index) => (
+            <a key={index} href="2#">
+              {car}
+            </a>
+          ))}
       </Menu>
       <RightMenu>
-        <a href='2#'>Shop</a>
-        <a href='2#'>Tesla Account</a>
+        <a href="2#">Shop</a>
+        <a href="2#">Tesla Account</a>
         <CustomBurger onClick={() => setBurgerStatus(true)} />
       </RightMenu>
       <BurgerNav show={burgerStatus}>
         <CustomClose onClick={() => setBurgerStatus(false)} />
-        <li><a href='2#'>Model 3</a></li>
-        <li><a href='2#'>Model Y</a></li>
-        <li><a href='2#'>Model S</a></li>
-        <li><a href='2#'>Model X</a></li>
-        <li><a href='2#'>Existing inventory</a></li>
-        <li><a href='2#'>Use inventory</a></li>
-        <li><a href='2#'>Existing inventory</a></li>
-
+        {cars &&
+          cars.map((car, index) => (
+            <li key={index} >
+              <a href="2#">{car}</a>
+            </li>
+          ))}
+        <li>
+          <a href="2#">Existing inventory</a>
+        </li>
+        <li>
+          <a href="2#">Use inventory</a>
+        </li>
+        <li>
+          <a href="2#">Trade-in</a>
+        </li>
       </BurgerNav>
     </Container>
   );
@@ -101,6 +113,7 @@ const BurgerNav = styled.div`
   right: 0;
   padding: 20px;
   text-align: start;
+  text-transform: uppercase;
   transform: ${props => props.show ? 'translateX(0)': 'translateX(100%)'};
   transition: transform 0.3s ease-in-out;
   li {
