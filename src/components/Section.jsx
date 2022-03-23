@@ -1,20 +1,25 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Fade } from 'react-reveal'
 
 const Section = ({title, description, leftBtnText, rightBtnText, backgroundImg}) => {
   return (
     <Wrap bgImage={backgroundImg}>
-      <CartItem>
-        <h1>{title}</h1>
-        <p>{description}</p>
-      </CartItem>
-      <Buttons>
-        <ButtonGroup>
-          <LeftButton>{leftBtnText}</LeftButton>
-          {rightBtnText && <RightButton>{ rightBtnText }</RightButton>}
-        </ButtonGroup>
-        <DownArrow src="/images/down-arrow.svg" />
-      </Buttons>
+      <Fade bottom>
+        <CartItem>
+          <h1>{title}</h1>
+          <p>{description}</p>
+        </CartItem>
+      </Fade>
+        <Buttons>
+          <Fade bottom>
+            <ButtonGroup>
+              <LeftButton>{leftBtnText}</LeftButton>
+              {rightBtnText && <RightButton>{rightBtnText}</RightButton>}
+            </ButtonGroup>
+          </Fade>
+          <DownArrow src="/images/down-arrow.svg" />
+        </Buttons>
     </Wrap>
   );
 }
@@ -35,7 +40,7 @@ const Wrap = styled.div`
 `
 
 const CartItem = styled.div`
-  padding-top: 50px;
+  padding-top: 100px;
   h1 {
     font-size: 40px;
     color: #171A20

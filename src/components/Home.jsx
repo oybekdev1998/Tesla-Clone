@@ -1,11 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
+import Header from './Header';
 import Section from './Section'
 
 const Home = () => {
   return (
     <div>
       <Container>
+        <Header />
         <Section
           title="Model 3"
           description="Order Online for Touchless Delivery"
