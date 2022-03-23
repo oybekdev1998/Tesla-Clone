@@ -2,11 +2,11 @@
 
 #Stack: 
 
--React;
+  -React;
 
--Redux-toolkit;
+  -Redux-toolkit;
 
--Styled-components;
+  -Styled-components;
 
 # Getting Started with Create React App
 
